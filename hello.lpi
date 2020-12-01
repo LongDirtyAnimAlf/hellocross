@@ -15,9 +15,40 @@
       </XPManifest>
       <Icon Value="0"/>
     </General>
-    <BuildModes Count="5">
+    <BuildModes Count="6">
       <Item1 Name="Default" Default="True"/>
-      <Item2 Name="Win64">
+      <Item2 Name="Win32">
+        <CompilerOptions>
+          <Version Value="11"/>
+          <PathDelim Value="\"/>
+          <Target>
+            <Filename Value="bin\$NameOnly($(ProjFile))-$(TargetCPU)-$(TargetOS)"/>
+          </Target>
+          <SearchPaths>
+            <IncludeFiles Value="$(ProjOutDir)"/>
+            <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
+          </SearchPaths>
+          <CodeGeneration>
+            <TargetCPU Value="i386"/>
+            <TargetOS Value="win32"/>
+            <Optimizations>
+              <OptimizationLevel Value="2"/>
+            </Optimizations>
+          </CodeGeneration>
+          <Linking>
+            <Debugging>
+              <GenerateDebugInfo Value="False"/>
+              <UseLineInfoUnit Value="False"/>
+            </Debugging>
+            <Options>
+              <Win32>
+                <GraphicApplication Value="True"/>
+              </Win32>
+            </Options>
+          </Linking>
+        </CompilerOptions>
+      </Item2>
+      <Item3 Name="Win64">
         <CompilerOptions>
           <Version Value="11"/>
           <PathDelim Value="\"/>
@@ -31,8 +62,15 @@
           <CodeGeneration>
             <TargetCPU Value="x86_64"/>
             <TargetOS Value="win64"/>
+            <Optimizations>
+              <OptimizationLevel Value="2"/>
+            </Optimizations>
           </CodeGeneration>
           <Linking>
+            <Debugging>
+              <GenerateDebugInfo Value="False"/>
+              <UseLineInfoUnit Value="False"/>
+            </Debugging>
             <Options>
               <Win32>
                 <GraphicApplication Value="True"/>
@@ -40,8 +78,8 @@
             </Options>
           </Linking>
         </CompilerOptions>
-      </Item2>
-      <Item3 Name="Darwinx64Cocoa">
+      </Item3>
+      <Item4 Name="Darwinx64Cocoa">
         <MacroValues Count="1">
           <Macro1 Name="LCLWidgetType" Value="cocoa"/>
         </MacroValues>
@@ -58,8 +96,15 @@
           <CodeGeneration>
             <TargetCPU Value="x86_64"/>
             <TargetOS Value="darwin"/>
+            <Optimizations>
+              <OptimizationLevel Value="2"/>
+            </Optimizations>
           </CodeGeneration>
           <Linking>
+            <Debugging>
+              <GenerateDebugInfo Value="False"/>
+              <UseLineInfoUnit Value="False"/>
+            </Debugging>
             <Options>
               <Win32>
                 <GraphicApplication Value="True"/>
@@ -67,8 +112,8 @@
             </Options>
           </Linking>
         </CompilerOptions>
-      </Item3>
-      <Item4 Name="Linuxx64">
+      </Item4>
+      <Item5 Name="Linuxx64">
         <MacroValues Count="1">
           <Macro2 Name="LCLWidgetType" Value="gtk2"/>
         </MacroValues>
@@ -85,8 +130,15 @@
           <CodeGeneration>
             <TargetCPU Value="x86_64"/>
             <TargetOS Value="linux"/>
+            <Optimizations>
+              <OptimizationLevel Value="2"/>
+            </Optimizations>
           </CodeGeneration>
           <Linking>
+            <Debugging>
+              <GenerateDebugInfo Value="False"/>
+              <UseLineInfoUnit Value="False"/>
+            </Debugging>
             <Options>
               <Win32>
                 <GraphicApplication Value="True"/>
@@ -94,8 +146,11 @@
             </Options>
           </Linking>
         </CompilerOptions>
-      </Item4>
-      <Item5 Name="LinuxArm">
+      </Item5>
+      <Item6 Name="LinuxArm">
+        <MacroValues Count="1">
+          <Macro2 Name="LCLWidgetType" Value="gtk2"/>
+        </MacroValues>
         <CompilerOptions>
           <Version Value="11"/>
           <PathDelim Value="\"/>
@@ -109,8 +164,15 @@
           <CodeGeneration>
             <TargetCPU Value="arm"/>
             <TargetOS Value="linux"/>
+            <Optimizations>
+              <OptimizationLevel Value="2"/>
+            </Optimizations>
           </CodeGeneration>
           <Linking>
+            <Debugging>
+              <GenerateDebugInfo Value="False"/>
+              <UseLineInfoUnit Value="False"/>
+            </Debugging>
             <Options>
               <Win32>
                 <GraphicApplication Value="True"/>
@@ -118,12 +180,12 @@
             </Options>
           </Linking>
         </CompilerOptions>
-      </Item5>
+      </Item6>
       <SharedMatrixOptions Count="2">
         <Item1 ID="142288916943" Modes="Darwinx64Cocoa" Type="IDEMacro" MacroName="LCLWidgetType" Value="cocoa"/>
-        <Item2 ID="560579463193" Modes="Linuxx64" Type="IDEMacro" MacroName="LCLWidgetType" Value="gtk2"/>
+        <Item2 ID="560579463193" Modes="Linuxx64,LinuxArm" Type="IDEMacro" MacroName="LCLWidgetType" Value="gtk2"/>
       </SharedMatrixOptions>
-    </BuildModes>    
+    </BuildModes>
     <PublishOptions>
       <Version Value="2"/>
       <UseFileFilters Value="True"/>
@@ -155,19 +217,26 @@
     <Version Value="11"/>
     <PathDelim Value="\"/>
     <Target>
-      <Filename Value="hello"/>
+      <Filename Value="bin\$NameOnly($(ProjFile))-$(TargetCPU)-$(TargetOS)"/>
     </Target>
     <SearchPaths>
       <IncludeFiles Value="$(ProjOutDir)"/>
       <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
     </SearchPaths>
-    <Linking>
-      <Options>
-        <Win32>
-          <GraphicApplication Value="True"/>
-        </Win32>
-      </Options>
-    </Linking>
+    <Parsing>
+      <SyntaxOptions>
+        <IncludeAssertionCode Value="True"/>
+      </SyntaxOptions>
+    </Parsing>
+    <CodeGeneration>
+      <Checks>
+        <IOChecks Value="True"/>
+        <RangeChecks Value="True"/>
+        <OverflowChecks Value="True"/>
+        <StackChecks Value="True"/>
+      </Checks>
+      <VerifyObjMethodCallValidity Value="True"/>
+    </CodeGeneration>
   </CompilerOptions>
   <Debugging>
     <Exceptions Count="3">
